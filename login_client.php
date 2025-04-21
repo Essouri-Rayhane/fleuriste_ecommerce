@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($client && password_verify($mot_de_passe, $client['mot_de_passe'])) {
         $_SESSION['client'] = $client['id_client'];
-        header("Location: client/espace_client.php");
+        header("Location: pages/client/produits.php");
         exit();
     } else {
         $message = "<p class='error'>❌ Identifiants incorrects</p>";

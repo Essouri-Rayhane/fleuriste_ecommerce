@@ -6,25 +6,31 @@
     <p><span>💐</span>Votre boutique en ligne pour toutes vos envies florales !Votre destination pour des bouquets élégants, des plantes rares et des cadeaux floraux sur-mesure <span>💐</span></p>
 
     <div class="menu-grid">
-    <a href="pages/produits.php" class="card">
-        <i class="fas fa-box-open"></i> Produits
+    <a href="#" class="card" onclick="openPopup('login')">
+        <i class="fas fa-sign-in-alt"></i> Login
     </a>
-    <a href="pages/clients.php" class="card">
-        <i class="fas fa-users"></i> Clients
+    <a href="#" class="card" onclick="openPopup('register')">
+        <i class="fas fa-user-plus"></i> Register
     </a>
-    <a href="pages/commandes.php" class="card">
-        <i class="fas fa-shopping-cart"></i> Commandes
-    </a>
-    <a href="pages/expeditions.php" class="card">
-        <i class="fas fa-truck"></i> Expéditions
-    </a>
-    <a href="pages/rapports.php" class="card">
-        <i class="fas fa-chart-line"></i> Rapports
-    </a>
+    <div id="popup" class="modal">
+  <div class="modal-content">
+    <h2 id="popup-title">Choisissez Le Type De Compte</h2>
+    <div class="modal-buttons">
+      <button onclick="redirectTo('admin')" class="btn">Admin</button>
+      <button onclick="redirectTo('client')" class="btn">Client</button>
+    </div>
+    <button class="btn-close" onclick="closePopup()">Fermer</button>
+  </div>
+</div>
 </div>
 
-    
+<!-- Popup Modal -->
+<!-- Popup Modal -->
 </div>
+
+
+    
+
 
 
 <!-- SECTION about -->
@@ -43,14 +49,13 @@
     <div class="content">
       <h2>Pourquoi Petalune?</h2>
       
-      <p>Spécialistes des fleurs de qualité, 
-        nous créons des compositions florales uniques pour toutes vos occasions 
-        :
-         </p>
-         <p> anniversaires, mariages, messages d’amour ou simples attentions. 
-         Nos bouquets, préparés avec passion,</p>
-<p>sont livrés avec soin pour faire naître l’émotion dès le premier regard.</p>
-<a href="pages/a-propos.php" class="card-cmd">En savoir plus</a>
+      <p><i class="fas fa-check"></i> Fleurs fraîches de qualité exceptionnelle</p>
+                    <p><i class="fas fa-check"></i> Compositions uniques et personnalisées</p>
+                    <p><i class="fas fa-check"></i> Service livraison soigné et rapide</p>
+                    <p><i class="fas fa-check"></i> Équipe de fleuristes passionnés</p>
+                </div>
+                <p class="highlight">Nos bouquets, préparés avec passion, sont livrés avec soin pour faire naître l'émotion dès le premier regard.</p>
+                <a href="pages/a-propos.php" class="btn btn-primary">En savoir plus <i class="fas fa-arrow-right"></i></a>
 
     </div>
 
@@ -66,6 +71,7 @@
     <a href="pages/produits.php" class="card">
       <img src="images/fleurs.jpg" alt="Fleurs" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px;">
       <p>Fleurs fraîches</p>
+      
     </a>
     <a href="pages/produits.php" class="card">
       <img src="images/plantes.jpg" alt="Plantes" style="width: 150px; height: 150px; object-fit: cover; border-radius: 10px;">
@@ -93,9 +99,10 @@
 <section class="cta-section">
   <h2>Vous avez une occasion spéciale ?</h2>
   <p>Commandez un bouquet personnalisé ou contactez-nous pour plus de détails 💌</p>
-  <a href="pages/commandes.php" class="card-cmd">Passer une commande</a>
-  <a href="contact" class="card-cmd">contactez-nous</a>
+  <a href="pages/client/produits.php" class="card-cmd">Passer une commande <i class="fas fa-shopping-basket"></i></a>
+  <a href="#contact" class="card-cmd">Contactez-nous <i class="fas fa-envelope"></i></a>
 </section>
+
 
 <!-- SECTION contact-->
 <section class="contact" id="contact">
@@ -117,5 +124,29 @@
         </div>
     </div>
 </section>
+<script>
+   let currentAction = '';
+
+function openPopup(action) {
+  currentAction = action;
+  document.getElementById('popup-title').textContent = 
+    action === 'login' ? "Se Connecter Comme :" : "Créer Un Compte Comme :";
+  document.getElementById('popup').style.display = 'flex';
+}
+
+function closePopup() {
+  document.getElementById('popup').style.display = 'none';
+}
+
+function redirectTo(role) {
+  const action = currentAction;
+  const url = (action === 'login')
+    ? (role === 'admin' ? 'login_admin.php' : 'login_client.php')
+    : (role === 'admin' ? 'register_admin.php' : 'register_client.php');
+
+  window.location.href = url;
+}
+
+</script>
 
 <?php include 'includes/footer.php'; ?>

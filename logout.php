@@ -121,6 +121,8 @@ session_destroy();
         <p>Merci pour votre visite, à très bientôt !</p>
         <div class="countdown">Redirection dans <span id="count">5</span> secondes...</div>
         <a href="login_client.php" class="btn-redirect">Se reconnecter maintenant</a>
+        <meta http-equiv="refresh" content="5;url=index.php">
+
     </div>
 
     <script>

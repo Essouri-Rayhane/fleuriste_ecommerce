@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($admin && password_verify($mot_de_passe, $admin['mot_de_passe'])) {
         $_SESSION['admin'] = $admin['id_admin'];
-        header("Location: admin/produits.php");
+        header("Location: pages/admin/produits.php");
         exit();
     } else {
         $message = "<p class='error'>❌ Identifiants incorrects</p>";

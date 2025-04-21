@@ -6,7 +6,6 @@
     --Roseframboise: #6d9773;
     --Rosefuchsia: #3a5a40;
     
-
     
         --rose-light: #FDE2E4;
         --rose: #f9c5d1;
@@ -866,7 +865,80 @@
 
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------ */
+.site-header.main-nav a {
+  font-size: 1rem;
+  padding: 0 1rem;
+  color: var(--Rosefuchsia);
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.site-header.main-nav a:hover {
+  color: var(--Roseframboise);
+  text-decoration: underline;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--Rosedragée);
+  padding: 0.3rem 5% 0.3rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+.main-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.main-nav > ul:not(.sidebar1) {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+/* Sidebar hidden off-screen by default */
+.sidebar1 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: rgba(255, 255, 255, 0.666);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px;
+  transition: right 0.3s ease-in-out;
+}
+.sidebar1 li {
+  width: 100%;
+  margin: 2rem;
+  margin-top: 5rem;
   
+}
+.sidebar1 li.A {
+  width: 100%;
+  margin: 2rem;
+  
+  
+}
+.sidebar1 a {
+  width: 100%;
+  color: #e91e63;
+}
+.menu-btn1 {
+  display:none;
+}
+
+
   
 /* ----------------formulaires ---------------------------------------------------------------------------------------------- */
 
@@ -886,10 +958,25 @@
 
 
   /* Responsive */
-  @media (max-width: 768px) {
+  @media (max-width: 1220px) {
+    .hideOnMobile {
+      display: none;
+    }
+    .menu-btn1 {
+      display:block;
+    }
+    
+  }
+  @media (max-width:768px) {
+    
+    
     .site-header {
       flex-direction: column;
-      align-items: flex-start;
+      align-items:flex-start;
+    }
+    .site-header {
+      flex-direction: column;
+      align-items:flex-start;
     }
   
     .main-nav {
@@ -938,4 +1025,83 @@
       padding: 40px 15px;
     }
   }
-  
+  /* ---------------------------------------------------------------------------------------------------- */
+  /* === MODAL STYLE === */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 15px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin-bottom: 25px;
+  font-size: 22px;
+  color: #333;
+}
+
+/* Buttons inside popup */
+.modal-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.modal-buttons .btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.modal-buttons .btn:hover {
+  background-color: #388E3C;
+}
+
+/* Close Button */
+.modal .btn-close {
+  background-color: #bbb;
+  color: white;
+  font-weight: bold;
+  padding: 10px 18px;
+  border-radius: 6px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.modal .btn-close:hover {
+  background-color: #999;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
